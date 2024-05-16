@@ -2,70 +2,79 @@ const mongoose = require("mongoose");
 
 const trajetSchema = new mongoose.Schema(
   {
-    trajetZoneName: { //Définit si c'est national, régional ou international
+    //********Définit le pays et la ville de départ et arrivée*/
+    trajet_ZoneType: {
       type: String,
-      require : true,
+      require:true,
     },
-    trajetZoneDeparture: { //Définit la zone de départ
+    trajet_PlaceDepartureName: {
       type: String,
-      require : true,
+      require:true,
     },
-    trajetZoneArrival: { //Définit la zone d'arrivée
+    trajet_PlaceArrivalName: {
       type: String,
-      require : true,
+      require:true,
     },
-    trajetZonePrix : {
+    trajet_DateDepart: {
+      type: Date,
+    },
+    trajet_DateArrivee: {
+      type: Date,
+    },
+    trajet_Commentaires: {
+      type: String,
+    },
+    trajet_zonePrice:{
       type : Number,
       require:true,
     },
-    trajetFrequenceZone:{
+     trajet_FrequenceZone:{
       type:String,
     },
-    trajetDateHeureDepart: {
-      type: Date,
+
+    trajet_Statut : {
+      type : Boolean
     },
-    trajetDateHeureArrivee: {
-      type: Date,
+    //******************************************** */  
+    //Pour Stocker l'utilisateur qui a définit ou créé le trajet'
+    trajetAuteurs: {
+      userId: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'UserSchema',
+      },  
+      userFirstName: {
+            type: String,
+        },
+        userLastName: {
+            type: String,
+        },
+        userEmail: {
+          type: String,
+      },
+        userNumberPhone: {
+            type: String,
+        }
     },
 
-    trajetCommentaires: {
-      type: String,
-    },
-    //Pour Stocker l'utilisateur qui a définit ou créé le trajet'
-    trajetUserGP: {
-      userFirstName: string,
-      userLastName: string,
-      userNumberPhone: string,
-    },
     //Pour Stocker les utilisateurs ayant commandé ce trajet
     trajet_ListUsersForTrajet: [
       {
+        userId: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: 'UserSchema',
+          required: true
+        },
         userFirstName: {
           type: String,
+          required: true
         },
-
         userLastName: {
           type: String,
-        },
-        userNumberPhone: {
-          type: String,
-        },
-        colisName: {
-          type: String,
-          enum: [
-            "Courrier - Enveloppe",
-            "Carton - Boîte",
-            "Emballage - Sachet",
-            "Valise",
-          ],
-          default: "Courrier - Enveloppe",
-        },
-        colisDescription: {
-          type: String,
-        },
-      },
+          required: true
+        }
+      }
     ],
   },
-  { timestamps: true }
+   
 );
 module.exports = mongoose.model("TrajetSchema", trajetSchema);
