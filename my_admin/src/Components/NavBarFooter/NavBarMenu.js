@@ -78,7 +78,7 @@ export default function NavBarMenu() {
         <Navbar.Brand href="#home">
           <img
             id="myLogo"
-            src="/sunuGP.jpg"
+            src="/sunulogo.jpeg"
             height="100"
             className="d-inline-block align-top"
             alt="Logo"
@@ -103,12 +103,14 @@ export default function NavBarMenu() {
           </Nav.Link>
           <Nav.Link className="navLink" as={Link} to={`/home/admin/${userId}/colis`} 
           onClick={() => handleItemClick('Produits')}>
-          Order / Commandes
           </Nav.Link>
           <Nav.Link className="navLink" as={Link} to={`/home/admin/${userId}/trajets`} 
           id={selectedItem === 'Trajets' ? 'selected' : ''}
           >
            Trajets
+          </Nav.Link>
+          <Nav.Link className="navLink" as={Link} to={`/home/admin/${userId}/orders`}>
+          Order / Commandes
           </Nav.Link>
           <Nav.Link className="navLink" as={Link} to={`/home/admin/${userId}/users`}>
             Utilisateurs

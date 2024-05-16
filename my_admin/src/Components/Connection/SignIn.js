@@ -63,11 +63,11 @@ const SignIn = () => {
     <Container id="myContainer">
     <Row>
       <Col className="firstCol" md="6">
-        <img className="FilleConnecte" src="./img1.webp" alt="echec" />
+        <img className="FilleConnecte" src="./sunulogo.jpeg" alt="echec" />
       </Col>
       <Col className="firstCol" md="6">
         <div className="layout-signin">
-           <img className="logo" src="./sunuGP.jpg" alt="echec" />
+           <img className="logo" src="./sunulogo.jpeg" alt="echec" />
             <h1 className="tittle">Connexion</h1>
            
           <div className="form-signin">

@@ -192,7 +192,7 @@ const handleDelete = async () => {
               />
               <Form.Label>Adresse Email</Form.Label>
               <Form.Control
-                type="email"
+                type="text"
                 name="userEmail"
                 value={trajet.trajetAuteurs.userEmail}
                 onChange={() => {}}

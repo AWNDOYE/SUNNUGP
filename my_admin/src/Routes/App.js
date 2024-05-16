@@ -13,6 +13,10 @@ import ProductCard from "../Components/Gestion/Products/ProductCard";
 import NewProduct from "../Components/Gestion/Products/NewProduct";
 import TrajetUpdate from "../Components/Gestion/Trajets/TrajetUpdate";
 import AddNewTrajet from "../Components/Gestion/Trajets/AddNewTrajet";
+import Orders from "../Components/Gestion/Orders/Orders";
+import NewOrder from "../Components/Gestion/Orders/NewOrder";
+import OrderUpdate from "../Components/Gestion/Orders/OrderUpdate";
+
 const token = localStorage.getItem("token");
 const userRole = localStorage.getItem("userRole");
 
@@ -120,6 +124,36 @@ const router = createBrowserRouter([
       <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
         <NavBarMenu />
         <UserUpdate />
+        <Footer />
+      </ProtectedRoute>
+    ),
+  },
+  { 
+    path: "/home/admin/:userId/orders",
+    element: (
+      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+        <NavBarMenu />
+        <Orders />
+        <Footer />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/home/admin/:userId/trajets/:trajetId/newOrder",
+    element: (
+      <ProtectedRoute isAuthenticated={token} isAdmin={parseInt(userRole) === 1}>
+        <NavBarMenu />
+        <NewOrder />
+        <Footer />
+      </ProtectedRoute>
+    ),
+  },
+  {
+    path: "/home/admin/:userId/orders/:orderId",
+    element: (
+      <ProtectedRoute isAuthenticated={token}  isAdmin={parseInt(userRole) === 1}>
+        <NavBarMenu />
+        <OrderUpdate />
         <Footer />
       </ProtectedRoute>
     ),

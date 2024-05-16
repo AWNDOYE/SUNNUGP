@@ -1,10 +1,11 @@
  .container {
-  background-color: #800000;
+  background-color: orange;
   margin-top: 1%;
   padding: 0%;
   border-radius: 1%;
   justify-content: center;
   align-items: center;
+  opacity:80%;
  } 
  #myContainer{
   width: 60%;
@@ -38,7 +39,7 @@
 .tittle{
   text-align: center;
   padding: 5%;
-  color: maroon;
+  color: orangered;
   font-weight: bold;
 }
 .label{

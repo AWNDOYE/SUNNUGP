@@ -3,6 +3,7 @@ const orderModel = require("../Models/OrderModel");
 const createTypeOrder = async (req, res) => {
   try {
     const {
+      order_Numero,
       order_Utilisateurs, // firstName , lastName, numberPhone
       order_Colis,
       order_PoidsColis,
@@ -15,6 +16,7 @@ const createTypeOrder = async (req, res) => {
     } = req.body;
 
     const orderCreated = await orderModel.create({
+      order_Numero,
       order_Utilisateurs, // firstName , lastName, numberPhone
       order_Colis,
       order_PoidsColis,
@@ -62,6 +64,7 @@ const updateOrder = async (req, res) => {
   try {
     const orderId = req.params.id;
     const {
+      order_Numero,
       order_Utilisateurs, // firstName , lastName, numberPhone
       order_Colis,
       order_PoidsColis,
@@ -75,6 +78,7 @@ const updateOrder = async (req, res) => {
     const orderUpdated = await orderModel.findByIdAndUpdate(
       orderId, // id recherché
       {
+        order_Numero,
         order_Utilisateurs, // firstName , lastName, numberPhone
         order_Colis,
         order_PoidsColis,
