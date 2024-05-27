@@ -6,6 +6,7 @@ const createTypeOrder = async (req, res) => {
       order_Numero,
       order_Utilisateurs, // firstName , lastName, numberPhone
       order_Colis,
+      order_Trajet,
       order_PoidsColis,
       order_NombreDeLitreColis,
       order_Destinataires, // nom+prenom , adresse
@@ -19,6 +20,7 @@ const createTypeOrder = async (req, res) => {
       order_Numero,
       order_Utilisateurs, // firstName , lastName, numberPhone
       order_Colis,
+      order_Trajet,
       order_PoidsColis,
       order_NombreDeLitreColis,
       order_Destinataires, // nom+prenom , adresse
@@ -67,6 +69,7 @@ const updateOrder = async (req, res) => {
       order_Numero,
       order_Utilisateurs, // firstName , lastName, numberPhone
       order_Colis,
+      order_Trajet,
       order_PoidsColis,
       order_NombreDeLitreColis,
       order_Destinataires, // nom+prenom , adresse
@@ -79,15 +82,16 @@ const updateOrder = async (req, res) => {
       orderId, // id recherché
       {
         order_Numero,
-        order_Utilisateurs, // firstName , lastName, numberPhone
-        order_Colis,
-        order_PoidsColis,
-        order_NombreDeLitreColis,
-        order_Destinataires, // nom+prenom , adresse
-        order_ColisCommentaires,
-        order_ColisStatus,
-        order_TypePayement,
-        order_CoutColis,
+      order_Utilisateurs, // firstName , lastName, numberPhone
+      order_Colis,
+      order_Trajet,
+      order_PoidsColis,
+      order_NombreDeLitreColis,
+      order_Destinataires, // nom+prenom , adresse
+      order_ColisCommentaires,
+      order_ColisStatus,
+      order_TypePayement,
+      order_CoutColis,
       },
       { new: true } // renvoi le document modifié
     );

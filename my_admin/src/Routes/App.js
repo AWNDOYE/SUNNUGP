@@ -17,6 +17,8 @@ import Orders from "../Components/Gestion/Orders/Orders";
 import NewOrder from "../Components/Gestion/Orders/NewOrder";
 import OrderUpdate from "../Components/Gestion/Orders/OrderUpdate";
 
+import OrderUpdateUser from "../Components/Gestion/Orders/OrderUpdateUser";
+
 const token = localStorage.getItem("token");
 const userRole = localStorage.getItem("userRole");
 
@@ -153,7 +155,7 @@ const router = createBrowserRouter([
     element: (
       <ProtectedRoute isAuthenticated={token}  isAdmin={parseInt(userRole) === 1}>
         <NavBarMenu />
-        <OrderUpdate />
+        <OrderUpdateUser />
         <Footer />
       </ProtectedRoute>
     ),

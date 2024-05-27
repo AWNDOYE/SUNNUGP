@@ -38,6 +38,7 @@ export default function Orders() {
        <table className="product-table">
           <thead  >
             <tr className="table-row">
+            <th>N° Order</th>
               <th>Expéditeur</th>
               <th>Téléphone</th>
               <th>Type Colis</th>
@@ -50,12 +51,12 @@ export default function Orders() {
           <tbody>
             {listOfOrders.map((order, index) => (
               <tr key={index}>
-              
+                <td> {order.order_Numero }</td>
                 <td> {`${order.order_Utilisateurs.user_FirstName} ${order.order_Utilisateurs.user_LastName}`}  </td>
                 <td>{order.order_Utilisateurs.user_NumberPhone}</td>
                 <td> {order.order_Colis.order_ColisName }</td>
                 <td>{order.order_CoutColis}</td>
-                <td>{order.order_Destinataires.name}</td>
+                <td>{order.order_Destinataires.nameDest}</td>
                 <td>{order.order_ColisStatus}</td>
                 <td>{order.order_TypePayement}</td>
                 <td>

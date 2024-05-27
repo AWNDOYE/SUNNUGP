@@ -1,80 +1,85 @@
 const mongoose = require("mongoose");
 
-const trajetSchema = new mongoose.Schema(
-  {
-    //********Définit le pays et la ville de départ et arrivée*/
-    trajet_ZoneType: {
-      type: String,
-      require:true,
-    },
-    trajet_PlaceDepartureName: {
-      type: String,
-      require:true,
-    },
-    trajet_PlaceArrivalName: {
-      type: String,
-      require:true,
-    },
-    trajet_DateDepart: {
-      type: Date,
-    },
-    trajet_DateArrivee: {
-      type: Date,
-    },
-    trajet_Commentaires: {
-      type: String,
-    },
-    trajet_zonePrice:{
-      type : Number,
-      require:true,
-    },
-     trajet_FrequenceZone:{
-      type:String,
-    },
+const trajetSchema = new mongoose.Schema({
+  //********Définit le pays et la ville de départ et arrivée*/
+  trajet_ZoneType: {
+    type: String,
+    require: true,
+  },
+  trajet_PlaceDepartureName: {
+    type: String,
+    require: true,
+  },
+  trajet_PlaceArrivalName: {
+    type: String,
+    require: true,
+  },
+  trajet_DateDepart: {
+    type: Date,
+  },
+  trajet_DateArrivee: {
+    type: Date,
+  },
+  trajet_Commentaires: {
+    type: String,
+  },
+  trajet_zonePrice: {
+    type: Number,
+    require: true,
+  },
+  trajet_FrequenceZone: {
+    type: String,
+  },
 
-    trajet_Statut : {
-      type : Boolean
+  trajet_Statut: {
+    type: Boolean,
+  },
+  //******************************************** */
+  //Pour Stocker l'utilisateur qui a définit ou créé le trajet'
+  trajetAuteurs: {
+    userId: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "UserSchema",
     },
-    //******************************************** */  
-    //Pour Stocker l'utilisateur qui a définit ou créé le trajet'
-    trajetAuteurs: {
+    userFirstName: {
+      type: String,
+    },
+    userLastName: {
+      type: String,
+    },
+    userEmail: {
+      type: String,
+    },
+    userNumberPhone: {
+      type: String,
+    },
+  },
+
+  //Pour Stocker les utilisateurs ayant commandé ce trajet
+  trajet_ListUsersForTrajet: [
+    {
       userId: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'UserSchema',
-      },  
-      userFirstName: {
-            type: String,
-        },
-        userLastName: {
-            type: String,
-        },
-        userEmail: {
-          type: String,
+        ref: "UserSchema",
+        require: true,
       },
-        userNumberPhone: {
-            type: String,
-        }
+      userFirstName: {
+        type: String,
+        require: true,
+      },
+      userLastName: {
+        type: String,
+        require: true,
+      },
+      userNumberPhone: {
+        type: String,
+        require: true,
+      },
+      userEmail: {
+        type: String,
+        require: true,
+      },
     },
-
-    //Pour Stocker les utilisateurs ayant commandé ce trajet
-    trajet_ListUsersForTrajet: [
-      {
-        userId: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'UserSchema',
-          required: true
-        },
-        userFirstName: {
-          type: String,
-          required: true
-        },
-        userLastName: {
-          type: String,
-          required: true
-        }
-      }
-    ],
-  },
-   
-);
+  ],
+}, { timestamps: true });
 module.exports = mongoose.model("TrajetSchema", trajetSchema);

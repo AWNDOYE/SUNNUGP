@@ -25,6 +25,7 @@ router.post('/createTrajet', trajet.createTypeTrajet)
 router.get('/allTrajet', trajet.readAllTrajet)
 router.get('/showTrajet/:id', trajet.readTrajetByID)
 router.put('/updateTrajet/:id', trajet.updateTrajet)
+router.get('/updateAllTrajet', trajet.updateStatutAllTrajet)
 router.delete('/deleteTrajet/:id', trajet.deleteTrajet)
 //****************************************/
 

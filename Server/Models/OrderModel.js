@@ -4,7 +4,7 @@ const OrderSchema = new mongoose.Schema(
   {
     order_Numero: {
       type: Number,
-      required: true,
+      require: true,
       unique: true,
     },
     //Les informations de l'utilisateur
@@ -12,19 +12,26 @@ const OrderSchema = new mongoose.Schema(
       user_Id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "UserSchema",
-        required: true,
       },
       user_FirstName: {
         type: String,
-        required: true,
+        require: true,
       },
       user_LastName: {
         type: String,
-        required: true,
+        require: true,
+      },
+      user_Address: {
+        type: String,
+        require: true,
+      },
+      user_Email: {
+        type: String,
+        require: true,
       },
       user_NumberPhone: {
         type: String,
-        required: true,
+        require: true,
       },
     },
 
@@ -35,8 +42,8 @@ const OrderSchema = new mongoose.Schema(
       trajet_Id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "TrajetSchema",
-        required: true,
-      }
+        require: true,
+      },
     },
 
     //********************************************************/
@@ -45,7 +52,7 @@ const OrderSchema = new mongoose.Schema(
       colis_Id: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "ColisSchema",
-        required: true,
+        require: true,
       },
       order_ColisName: {
         type: String,
@@ -74,18 +81,17 @@ const OrderSchema = new mongoose.Schema(
       default: 0,
     },
     order_Destinataires: {
-      // Tableau de destinataires
       nameDest: {
         type: String,
-        required: true,
+        require: true,
       },
       adresseDest: {
         type: String,
-        required: true,
+        require: true,
       },
-      telephoneDest : {
+      telephoneDest: {
         type: Number,
-        required: true,
+        require: true,
       },
     },
     order_ColisCommentaires: {
@@ -93,18 +99,9 @@ const OrderSchema = new mongoose.Schema(
     },
     order_ColisStatus: {
       type: String,
-      // enum: [
-      //   "Colis en attente",
-      //   "Colis réceptionné",
-      //   "Colis En Cours d'Envoi",
-      //   "Colis transmis",
-      // ],
-      // default: "Colis en attente",
     },
     order_TypePayement: {
       type: String,
-      // enum: [" Paiement à la réception ", "Wave", "Orange Money"],
-      // default: "Paiement à la réception",
     },
     order_CoutColis: {
       type: Number,

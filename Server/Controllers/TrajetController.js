@@ -134,10 +134,30 @@ const deleteTrajet = async (req, res) => {
   }
 };
 
+//***************MAJ TRAJET************ */
+const updateStatutAllTrajet = async (req, res) => {
+
+  try {
+    const today = new Date();
+    await trajetModel.updateMany(
+      { trajet_DateDepart: { $lt: today } },
+      { $set: { trajet_Statut: false } }
+    );
+
+    const allTrajets = await trajetModel.find();
+    res.json({  message:
+      "La mise à jour des informations du trajet s'est déroulé avec succès.",allTrajets });
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
+
 module.exports = {
   createTypeTrajet,
   readAllTrajet,
   readTrajetByID,
   updateTrajet,
   deleteTrajet,
+  updateStatutAllTrajet,
 };

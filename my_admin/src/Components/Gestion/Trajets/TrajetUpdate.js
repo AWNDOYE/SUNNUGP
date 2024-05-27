@@ -27,7 +27,7 @@ export default function TrajetUpdate() {
     trajet_zonePrice: 0,
     trajet_FrequenceZone: "",
     trajet_Statut: 0,
-    trajetAuteurs: [
+    trajetAuteurs: 
       {
         userId: "",
         userFirstName: "",
@@ -35,11 +35,14 @@ export default function TrajetUpdate() {
         userEmail: "",
         userNumberPhone: "",
       },
-    ],
-    trajetListOfUsers: [
-      {userId: "",
-        userFirstName: "",
-        userLastName: "",}
+      trajet_ListUsersForTrajet: [
+        {
+          userId: "",
+          userFirstName: "",
+          userLastName: "",
+          userEmail: "",
+          userNumberPhone: "",
+        },
     ]
   });
 
@@ -213,13 +216,13 @@ const handleDelete = async () => {
                 <option value="" disabled>
                   Select zone
                 </option>
-                <option value="national">National</option>
-                <option value="regional">Régional</option>
-                <option value="international">International</option>
+                <option value="National">National</option>
+                <option value="Régional">Régional</option>
+                <option value="International">International</option>
               </Form.Select>
             </Form.Group>
             {/* *****************************************International - ville************************************ */}
-            {trajet.trajet_ZoneType === "international" && (
+            {trajet.trajet_ZoneType === "International" && (
               <>
                 <Form.Group controlId="country">
                   <Form.Label>Pays de départ</Form.Label>
@@ -291,7 +294,7 @@ const handleDelete = async () => {
               </>
             )}
             {/* *****************************************National - Regional************************************ */}
-            {trajet.trajet_ZoneType === "regional" && (
+            {trajet.trajet_ZoneType === "Régional" && (
               <>
                 <Form.Group controlId="region">
                   <Form.Label>Région de départ</Form.Label>
@@ -363,7 +366,7 @@ const handleDelete = async () => {
               </>
             )}
             {/* *****************************************National - Département************************************ */}
-            {trajet.trajet_ZoneType === "national" && (
+            {trajet.trajet_ZoneType === "National" && (
               <>
                 <Form.Group controlId="departement">
                   <Form.Label>Ville de Départ:</Form.Label>

@@ -4,11 +4,7 @@ import {
   Card,
   CardBody,
   Form,
-  FormGroup,
-  FormControl,
-  FormLabel,
   Button,
-  Placeholder,
 } from "react-bootstrap";
 
 
@@ -39,7 +35,7 @@ export default function AddNewTrajet() {
     trajet_zonePrice: 0,
     trajet_FrequenceZone: "",
     trajet_Statut: 1,
-    trajetAuteurs: [
+    trajetAuteurs: 
       {
         userId: "",
         userFirstName: "",
@@ -47,10 +43,9 @@ export default function AddNewTrajet() {
         userEmail: "",
         userNumberPhone: "",
       },
-    ],
   });
   const navigate = useNavigate();
-  const { userId, userName } = useParams();
+  const { userId } = useParams();
   const zonePriceRef = useRef(null);
   const dateDepartRef = useRef(null);
   const dateArrivalRef = useRef(null);
@@ -90,7 +85,6 @@ export default function AddNewTrajet() {
     setTrajet((prevTrajet) => ({
       ...prevTrajet,
       trajetAuteurs: {
-        ...prevTrajet.trajetAuteurs[0],
         userId: selectedUser._id,
         userFirstName: selectedUser.userFirstName,
         userLastName: selectedUser.userLastName,
@@ -149,9 +143,9 @@ export default function AddNewTrajet() {
         return; // Sort de la fonction si la vérification échoue
       }
       // Vérifie si la date de départ est supérieure à la date d'arrivée
-      if (trajet.trajet_zonePrice = 0 ) {
+      if (trajet.trajet_zonePrice === 0 ) {
         alert(
-          "Veuillez saisir le prix du correspondant au trajet défini."
+          "Veuillez saisir le prix de la zone correspondant au trajet défini."
         );
         zonePriceRef.current.focus();
         return; // Sort de la fonction si la vérification échoue
@@ -160,13 +154,11 @@ export default function AddNewTrajet() {
       const response = await axios
         .post(`${Config.api_url}/createTrajet`, trajet)
         .then((response) => {
-          //   <Badge pill bg="info">
-          //   Le produit a été ajouté avec succès dans la base de données.
-          // </Badge>
           console.log(
             "Nouveau trajet ajouté avec succès !",
             response.data.trajetCreated
           );
+          alert( "Nouveau trajet ajouté avec succès !")
           navigate(-1);
         });
     } catch (error) {
@@ -235,13 +227,13 @@ export default function AddNewTrajet() {
                 <option value="" disabled>
                   Select zone
                 </option>
-                <option value="national">National</option>
-                <option value="regional">Régional</option>
-                <option value="international">International</option>
+                <option value="National">National</option>
+                <option value="Régional">Régional</option>
+                <option value="International">International</option>
               </Form.Select>
             </Form.Group>
             {/* *****************************************International - ville************************************ */}
-            {selectedZone === "international" && (
+            {selectedZone === "International" && (
               //***Liste et choix de la ville de départ */
               <>
                 <Form.Group controlId="country">
@@ -271,7 +263,7 @@ export default function AddNewTrajet() {
                       Select country
                     </option>
                     {citiesWithAirports.map((country) => (
-                      <option key={country.value} value={country.value}>
+                      <option key={country.value} value={country.label}>
                         {country.label}
                       </option>
                     ))}
@@ -305,7 +297,7 @@ export default function AddNewTrajet() {
                       Select country
                     </option>
                     {citiesWithAirports.map((town) => (
-                      <option key={town.value} value={town.value}>
+                      <option key={town.value} value={town.label}>
                         {town.label}
                       </option>
                     ))}
@@ -314,7 +306,7 @@ export default function AddNewTrajet() {
               </>
             )}
             {/* *****************************************National - Regional************************************ */}
-            {selectedZone === "regional" && (
+            {selectedZone === "Régional" && (
               //***Liste et choix de la ville de départ */
               <>
                 <Form.Group controlId="region">
@@ -344,7 +336,7 @@ export default function AddNewTrajet() {
                       Sélectionner la région
                     </option>
                     {regionsSenegal.map((region) => (
-                      <option key={region.value} value={region.value}>
+                      <option key={region.value} value={region.label}>
                         {region.label}
                       </option>
                     ))}
@@ -378,7 +370,7 @@ export default function AddNewTrajet() {
                       Sélectionner la région
                     </option>
                     {regionsSenegal.map((region) => (
-                      <option key={region.value} value={region.value}>
+                      <option key={region.value} value={region.label}>
                         {region.label}
                       </option>
                     ))}
@@ -388,7 +380,7 @@ export default function AddNewTrajet() {
             )}
 
             {/* *****************************************National - Département************************************ */}
-            {selectedZone === "national" && (
+            {selectedZone === "National" && (
               //***Liste et choix des département */
               <>
                 <Form.Group controlId="departement">
