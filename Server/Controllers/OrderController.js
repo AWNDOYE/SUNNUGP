@@ -133,6 +133,17 @@ const deleteOrder = async (req, res) => {
       .json({ message: "Erreur lors de la suppression.", error });
   }
 };
+//***************LISTER ORDER /USER************ */
+const listOrderOfUser = async (req, res) => {
+  try {
+    const userId = req.params.id;
+    // console.log("User ID:", userId); // Log l'ID de l'utilisateur
+    const ordersByUser = await orderModel.find({ 'order_Utilisateurs.user_Id': userId });
+    res.status(200).json(ordersByUser);
+  } catch (error) {
+    res.status(500).json({ message: 'Erreur lors de la récupération des commandes', error });
+  }
+};
 
 module.exports = {
   createTypeOrder,
@@ -140,4 +151,5 @@ module.exports = {
   readOrderByID,
   updateOrder,
   deleteOrder,
+  listOrderOfUser,
 };

@@ -53,6 +53,7 @@ router.get('/allOrder', order.readAllOrder)
 router.get('/showOrder/:id', order.readOrderByID)
 router.put('/updateOrder/:id', order.updateOrder)
 router.delete('/deleteOrder/:id', order.deleteOrder)
+router.get('/listOrderByUser/:id', order.listOrderOfUser)
 
 module.exports=router;
 
